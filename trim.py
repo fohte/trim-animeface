@@ -1,4 +1,5 @@
 import argparse
+import glob
 import os
 
 import cv2
@@ -22,7 +23,12 @@ if __name__ == '__main__':
 
     d = detector.AnimeFaceDetector(args.cascade_file)
 
-    for filepath in args.input:
+    if len(args.input) == 1 and '*' in args.input[0]:
+        files = glob.iglob(args.input[0])
+    else:
+        files = args.input
+
+    for filepath in files:
         if not os.path.exists(filepath):
             print('WARNING: {} is not found. Skip detect.'.format(filepath))
             continue
