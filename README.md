@@ -3,7 +3,7 @@
 ## Requirements
 
 - Python 3
-- OpenCV 2
+- OpenCV
 
 ## Usage
 
