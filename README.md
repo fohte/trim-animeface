@@ -23,6 +23,6 @@ pip install autopep8
 And you must format python codes before commit:
 
 ```
-isort *.py
+isort *.py -o cv2
 autopep8 *.py -a --in-place
 ```
