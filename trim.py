@@ -3,6 +3,7 @@ import glob
 import os
 
 import cv2
+import progressbar
 
 import detector
 
@@ -14,6 +15,7 @@ if __name__ == '__main__':
     parser.add_argument('--output-dir', '-o', type=str, default='out')
     parser.add_argument('--cascade-file', '-c', type=str,
                         default='https://raw.githubusercontent.com/nagadomi/lbpcascade_animeface/master/lbpcascade_animeface.xml')
+    parser.add_argument('--progress', '-p', action='store_true')
 
     args = parser.parse_args()
 
@@ -24,13 +26,18 @@ if __name__ == '__main__':
     d = detector.AnimeFaceDetector(args.cascade_file)
 
     if len(args.input) == 1 and '*' in args.input[0]:
-        files = glob.iglob(args.input[0])
+        files = glob.glob(args.input[0])
     else:
         files = args.input
 
+    if args.progress:
+        progress = progressbar.ProgressBar()
+        files = progress(files)
+
     for filepath in files:
         if not os.path.exists(filepath):
-            print('WARNING: {} is not found. Skip detect.'.format(filepath))
+            print(
+                '\r\033[KWARNING: {} is not found. Skip detect.'.format(filepath))
             continue
 
         srcfilename, ext = os.path.splitext(os.path.basename(filepath))
