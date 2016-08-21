@@ -16,6 +16,7 @@ if __name__ == '__main__':
     parser.add_argument('--cascade-file', '-c', type=str,
                         default='https://raw.githubusercontent.com/nagadomi/lbpcascade_animeface/master/lbpcascade_animeface.xml')
     parser.add_argument('--progress', '-p', action='store_true')
+    parser.add_argument('--resize', '-r', type=int, default=-1)
 
     args = parser.parse_args()
 
@@ -41,7 +42,10 @@ if __name__ == '__main__':
             continue
 
         srcfilename, ext = os.path.splitext(os.path.basename(filepath))
-        faces = d.detect(filepath)
+        faces = d.detect(filepath, size=(args.resize, args.resize))
         for i, img in enumerate(faces):
+            if args.resize >= 0:
+                cv2.resize(img, (args.resize, args.resize))
+
             cv2.imwrite('{}/{}_{}{}'.format(output_dir,
                                             srcfilename, i, ext), img)
