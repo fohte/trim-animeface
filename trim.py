@@ -24,7 +24,7 @@ if __name__ == '__main__':
     if not os.path.isdir(output_dir):
         os.mkdir(output_dir)
 
-    d = detector.AnimeFaceDetector(args.cascade_file)
+    d = detector.FaceDetector(args.cascade_file)
 
     if len(args.input) == 1 and '*' in args.input[0]:
         filepath = args.input[0]

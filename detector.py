@@ -4,7 +4,7 @@ import urllib.request
 import cv2
 
 
-class AnimeFaceDetector(object):
+class FaceDetector(object):
 
     def __init__(self, cascade_file):
         f = _get_filepath(cascade_file)
