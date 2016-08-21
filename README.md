@@ -7,8 +7,10 @@
 
 ## Usage
 
+For example, you trim the anime face from some images with [nagadomi/lbpcascade_animeface](https://raw.githubusercontent.com/nagadomi/lbpcascade_animeface/master/lbpcascade_animeface.xml):
+
 ```
-python trim.py *.png -o out/
+python trim.py *.png -o out/ -c https://raw.githubusercontent.com/nagadomi/lbpcascade_animeface/master/lbpcascade_animeface.xml
 ```
 
 ## Pre-commit

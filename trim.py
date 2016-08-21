@@ -13,8 +13,7 @@ if __name__ == '__main__':
 
     parser.add_argument('input', type=str, nargs='+')
     parser.add_argument('--output-dir', '-o', type=str, default='out')
-    parser.add_argument('--cascade-file', '-c', type=str,
-                        default='https://raw.githubusercontent.com/nagadomi/lbpcascade_animeface/master/lbpcascade_animeface.xml')
+    parser.add_argument('--cascade-file', '-c', type=str, required=True)
     parser.add_argument('--progress', '-p', action='store_true')
     parser.add_argument('--resize', '-r', type=int, default=-1)
 
