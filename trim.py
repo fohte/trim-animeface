@@ -27,7 +27,9 @@ if __name__ == '__main__':
     d = detector.AnimeFaceDetector(args.cascade_file)
 
     if len(args.input) == 1 and '*' in args.input[0]:
-        files = glob.glob(args.input[0])
+        filepath = args.input[0]
+        filepath = os.path.expanduser(filepath)
+        files = glob.glob(filepath)
     else:
         files = args.input
 
