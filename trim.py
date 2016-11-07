@@ -46,7 +46,7 @@ if __name__ == '__main__':
         faces = d.detect(filepath, size=(args.resize, args.resize))
         for i, img in enumerate(faces):
             if args.resize >= 0:
-                cv2.resize(img, (args.resize, args.resize))
+                img = cv2.resize(img, (args.resize, args.resize))
 
             cv2.imwrite('{}/{}_{}{}'.format(output_dir,
                                             srcfilename, i, ext), img)
